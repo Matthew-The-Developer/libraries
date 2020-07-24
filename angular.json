@@ -2,5 +2,49 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "angular-gradient": {
+      "projectType": "library",
+      "root": "projects/angular-gradient",
+      "sourceRoot": "projects/angular-gradient/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-gradient/tsconfig.lib.json",
+            "project": "projects/angular-gradient/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-gradient/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-gradient/src/test.ts",
+            "tsConfig": "projects/angular-gradient/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-gradient/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-gradient/tsconfig.lib.json",
+              "projects/angular-gradient/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "098e979f-7e14-4588-b1f9-d88e59f1c0dd"
+  },
+  "defaultProject": "angular-gradient"
 }
